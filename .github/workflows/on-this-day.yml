@@ -2,8 +2,7 @@ name: Run On This Day
 
 on:
   schedule:
-    # Runs "at 15:00 UTC everyday" (see https://crontab.guru)
-    - cron: '0 15 * * *'
+    - cron: '25 15 * * *'
 
 env:
   TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}
