@@ -1,0 +1,17 @@
+{
+  "name": "pcca-bots-a",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security",
+    "twitter-api-v2": "^1.12.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
+  }
+}
