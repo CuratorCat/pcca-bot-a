@@ -44,8 +44,6 @@ if (fs.existsSync(path)) {
   console.log('No events for today, exit')
 }
 
-process.exit()
-
 function lowercaseFirstLetter(string) {
   return string.charAt(0).toLowerCase() + string.slice(1)
 }
