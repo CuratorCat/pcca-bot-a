@@ -13,4 +13,5 @@ Making daily **On This Day** tweets from https://twitter.com/pcc_archive
 - Generated Data: [./data/generated/on-this-day.json](./data/generated/on-this-day.json)
 - Public URL for Generated Data: https://raw.githubusercontent.com/CuratorCat/pcca-bot-a/main/data/generated/on-this-day.json
 - Data License: [CC0](./LICENSE-data)
-- GitHub Actions: [![Run On This Day](https://github.com/CuratorCat/pcca-bot-a/actions/workflows/on-this-day.yml/badge.svg)](https://github.com/CuratorCat/pcca-bot-a/actions/workflows/on-this-day.yml)
+- [![Generate On This Day Data](https://github.com/CuratorCat/pcca-bot-a/actions/workflows/generate-on-this-day.yml/badge.svg)](https://github.com/CuratorCat/pcca-bot-a/actions/workflows/generate-on-this-day.yml)
+- [![Run On This Day](https://github.com/CuratorCat/pcca-bot-a/actions/workflows/on-this-day.yml/badge.svg)](https://github.com/CuratorCat/pcca-bot-a/actions/workflows/on-this-day.yml)
