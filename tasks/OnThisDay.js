@@ -16,7 +16,7 @@ if (fs.existsSync(path)) {
   const data = require('../' + path)
   // console.log(data.length)
 
-  data.map((data) => {
+  data.map((data, index) => {
     var yearsMsg = ''
 
     var years = parseInt(yyyy) - parseInt(data.date)
@@ -34,14 +34,21 @@ if (fs.existsSync(path)) {
 
     var tweetMsg = yearsMsg + lowercaseFirstLetter(data.description)
 
+    // delay 5s between every tweet
+    delayedTweet(tweetMsg, index * 5000)
+  })
+} else {
+  console.log('No events for today')
+}
+
+function delayedTweet(tweetMsg, time) {
+  setTimeout(() => {
     if (process.env.IS_LOCAL_DEV) {
-      console.log('dev tweet', tweetMsg)
+      console.log('dev tweet', tweetMsg, time)
     } else {
       tweet(tweetMsg)
     }
-  })
-} else {
-  console.log('No events for today, exit')
+  }, time)
 }
 
 function lowercaseFirstLetter(string) {
