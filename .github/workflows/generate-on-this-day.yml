@@ -17,9 +17,11 @@ jobs:
         with:
           node-version: 16
       - name: Install Deps
-        run: npm install --omit=dev
+        run: npm install
       - name: Run Task
         run: node ./scripts/generate-on-this-day.js
+      - name: Run Prettier
+        run: npx prettier --write ./data/generate/on-this-day.json
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
