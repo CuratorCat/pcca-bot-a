@@ -1,0 +1,26 @@
+name: Generate On This Day Data
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - data/on-this-day/**
+
+jobs:
+  generate-on-this-day:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Deps
+        run: npm install --omit=dev
+      - name: Run Task
+        run: node ./scripts/generate-on-this-day.js
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Generate `on-this-day` data'
