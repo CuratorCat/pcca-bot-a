@@ -23,4 +23,5 @@ jobs:
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          file_pattern: data/*.json
           commit_message: 'Generate `on-this-day` data'
