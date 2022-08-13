@@ -18,8 +18,14 @@ fs.readdir(dir, (err, files) => {
 
     resolve(data)
   }).then((data) => {
+    data.data.sort(sortByDate)
+
     const date = new Date()
     data.lastUpdated = date.toISOString()
     fs.writeFileSync('./data/generated/on-this-day.json', JSON.stringify(data))
   })
 })
+
+function sortByDate(a, b) {
+  return new Date(a.date).getTime() - new Date(b.date).getTime()
+}
