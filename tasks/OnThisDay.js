@@ -1,38 +1,33 @@
 const fs = require('fs')
 
 const tweet = require('../lib/tweet')
-var today = new Date()
-var dd = String(today.getDate()).padStart(2, '0')
-var mm = String(today.getMonth() + 1).padStart(2, '0')
-var yyyy = String(today.getFullYear())
-// console.log('Today is', yyyy + '-' + mm + '-' + dd)
+
+const today = new Date(),
+  dd = String(today.getDate()).padStart(2, '0'),
+  mm = String(today.getMonth() + 1).padStart(2, '0'),
+  yyyy = String(today.getFullYear())
 
 const path = './data/on-this-day/' + mm + dd + '.json'
 
 if (fs.existsSync(path)) {
   // path exists
-  console.log('Events file exist', path)
+  console.log('data source:', path)
   // load data
   const data = require('../' + path)
-  // console.log(data.length)
+  console.log('item count:', data.length)
 
-  data.map((data, index) => {
-    var yearsMsg = ''
-
-    var years = parseInt(yyyy) - parseInt(data.date)
-
-    if (years === 1) {
-      yearsMsg = 'A year ago today, '
-    } else if (years > 1) {
-      yearsMsg = years + ' years ago today, '
-    } else if (years === 0) {
-      yearsMsg = 'Today, '
-    } else {
-      console.log('date error')
-      process.exit(1)
-    }
-
-    var tweetMsg = yearsMsg + lowercaseFirstLetter(data.description)
+  data.map((item, index) => {
+    const { date, description: msg } = item
+    const yearsBtw = parseInt(yyyy) - parseInt(date)
+    const prefixMsg =
+      yearsBtw === 1
+        ? `A year ago today`
+        : yearsBtw > 1
+        ? `${yearsBtw} years ago today`
+        : yearsBtw === 0
+        ? `Today`
+        : console.log('date error') & process.exit(1)
+    const tweetMsg = `${prefixMsg}, ${lowercaseFirstLetter(msg)}`
 
     // delay 5s between every tweet
     delayedTweet(tweetMsg, index * 5000)
